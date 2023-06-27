@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./App.css";
 
 
+
 const App = ()=> {
 
    const [fields,setFields] = useState({num1:"", num2:"",result:""});
@@ -36,6 +37,12 @@ const App = ()=> {
     
         
     }
+
+    //reset
+
+    const onReset = ()=>{
+            setFields({num1:"", num2:"",result:""})
+    }
     return(
         <>
             <h1>Tech Altum Mini Calculator </h1>
@@ -48,12 +55,14 @@ const App = ()=> {
                <input  onClick={(e)=>doOperation(e,"-")} type="submit" value="-" />
                <input  onClick={(e)=>doOperation(e,"*")} type="submit" value="*"/>
                <input  onClick={(e)=>doOperation(e,"/")} type="submit"  value="/"/> <br />
-               <label htmlFor="result">Result</label> <br />
+               <label htmlFor="result">Result: </label> 
                <input onChange={onChangeHandler} type="text" name="result"  value={fields.result}/>
-               
-
+                
+                
                
            </form>
+           <button className="ResetBtn" onClick={onReset}> Reset</button>
+           
         </>
     )
 }
